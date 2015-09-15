@@ -1,0 +1,83 @@
+{
+    "key": "group_55bb6b8025d59",
+    "title": "Application Information",
+    "fields": [
+        {
+            "key": "field_52d80858327a3",
+            "label": "Address Application to",
+            "name": "quan_job_user",
+            "type": "user",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": [
+                "editor",
+                "author"
+            ],
+            "allow_null": 1,
+            "multiple": 0
+        },
+        {
+            "key": "field_52d80898327a4",
+            "label": "E-Mail Address",
+            "name": "quan_job_email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_52d808f6327a5",
+            "label": "Phone",
+            "name": "quan_job_phone",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "quan_jobs"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1442305884
+}
