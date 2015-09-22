@@ -23,8 +23,8 @@ class Plugin extends Boilerplate
         \add_filter('post_type_link', [$this, 'filterPostLink'], 10, 2);
 
         if (\is_admin()) {
-            $this->registerScript();
-            $this->jobAddressInfo();
+            \add_action( 'admin_enqueue_scripts', [$this, 'registerScript']);
+            \add_action('wp_ajax_quanJobUserId', [$this, 'jobAddressInfo']);
         }
     }
 
@@ -33,28 +33,24 @@ class Plugin extends Boilerplate
         new CreateCpt($this->postType, 'Job Opening', 'Job Openings', 'dashicons-money');
     }
 
-    private function registerScript()
+    public function registerScript()
     {
-        \add_action( 'admin_enqueue_scripts', function() {
-            $screen = \get_current_screen();
-            if ($screen->post_type == $this->postType) {
-                \QuanDigital\WpLib\Helpers::log(plugin_dir_url( __FILE__ ) . 'quan-jobs.js');
-                \wp_enqueue_script('quan_admin_jobs', plugin_dir_url( __FILE__ ) . 'quan-jobs.js', array('jquery'), '1.0');
-            }
-        });
+        $screen = \get_current_screen();
+        if ($screen->post_type == $this->postType) {
+            \QuanDigital\WpLib\Helpers::log(plugin_dir_url( __FILE__ ) . 'quan-jobs.js');
+            \wp_enqueue_script('quan_admin_jobs', plugin_dir_url( __FILE__ ) . 'quan-jobs.js', array('jquery'), '1.0');
+        }
     }
 
-    private function jobAddressInfo()
+    public function jobAddressInfo()
     {
-        add_action('wp_ajax_quanJobUserId', function() {
-            $user = get_user_by('id', $_GET['userId']);
-            $response = [];
-            $response['mail'] = $user->user_email;
-            $response['phone'] = get_user_meta($user->ID, 'quan_phonenumber', true);
+        $user = get_user_by('id', $_GET['userId']);
+        $response = [];
+        $response['mail'] = $user->user_email;
+        $response['phone'] = get_user_meta($user->ID, 'quan_phonenumber', true);
 
-            echo json_encode($response);
-            wp_die();
-        });
+        echo json_encode($response);
+        wp_die();
     }
 
     public function addArchiveRewrite()
