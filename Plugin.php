@@ -76,22 +76,28 @@ class Plugin extends Boilerplate
     public function filterPostLink($post_link, $post)
     {
         if ($post->post_type === $this->postType && $post->post_status === 'publish') {
-            return str_replace('/' . $post->post_type . '/', '/job/', $post_link);
+            $post_link = str_replace('/' . $post->post_type . '/', '/job/', $post_link);
         }
+
+        return $post_link;
     }
 
     public function archiveTemplate($template)
     {
         if (\is_post_type_archive($this->postType)) {
-            return __DIR__ . '/templates/archive-template.php';
+            $template = __DIR__ . '/templates/archive-template.php';
         }
+
+        return $template;
     }
 
     public function singleTemplate($template)
     {
         if (\get_post_type(\get_the_id()) === $this->postType) {
-            return __DIR__ . '/templates/single-template.php';
+            $template = __DIR__ . '/templates/single-template.php';
         }
+
+        return $template;
     }
 
 }
