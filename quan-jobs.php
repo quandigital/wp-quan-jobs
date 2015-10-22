@@ -10,7 +10,7 @@ use QuanDigital\WpLib\Autoload;
  * Author: Quan Digital GmbH
  * Author URI: http://www.quandigital.com/
  * Description: Adds a custom post types for jobs
- * Version: 1.1.2
+ * Version: 1.1.3
  * License: MIT
  */
 
